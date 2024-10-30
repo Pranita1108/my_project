@@ -1,5 +1,6 @@
-# my_project
+# Zomato-Clone / my_project
 
-to learn webhook and poll SCM
+This project is used to learn webhook and poll SCM triggers.
 
-simulation trigger to learn poll SCM  
+![ZOMATO](https://github.com/user-attachments/assets/e75b2db6-d6c0-4c86-be74-77035cca76e6)
+
