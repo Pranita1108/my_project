@@ -1,21 +1,21 @@
-pipeline{
+pipeline {
     agent any
-    tools{
+    tools {
         jdk 'jdk17'
-        nodejs 'node16'
+        nodejs 'node23'
     }
     environment {
         SCANNER_HOME=tool 'sonar-scanner'
     }
     stages {
-        stage('clean workspace'){
-            steps{
+        stage ("clean Workspace") {
+            steps {
                 cleanWs()
             }
         }
-        stage('Checkout from Git'){
-            steps{
-                git branch: 'main', url: 'https://github.com/vijaygiduthuri/Zomato.git'
+        stage ("Git Checkout") {
+            steps {
+                git 'https://github.com/KastroVKiran/Zomato-Project-Kastro.git'
             }
         }
         stage("Sonarqube Analysis "){
@@ -26,50 +26,83 @@ pipeline{
                 }
             }
         }
-        stage("quality gate"){
+        stage("Code Quality Gate"){
            steps {
                 script {
                     waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token' 
                 }
             } 
         }
-        stage('Install Dependencies') {
+        stage("Install NPM Dependencies") {
             steps {
                 sh "npm install"
             }
         }
         stage('OWASP FS SCAN') {
             steps {
-                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
+                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit -n', odcInstallation: 'DP-Check'
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-            }
-        }
-        stage('TRIVY FS SCAN') {
+    }
+}
+        stage ("Trivy File Scan") {
             steps {
-                sh "trivy fs . > trivyfs.txt"
+                sh "trivy fs . > trivy.txt"
             }
         }
-        stage("Docker Build & Push"){
-            steps{
-                script{
-                   withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
-                       sh "docker build -t zomato ."
-                       sh "docker tag zomato vijaygiduthuri/zomato:latest "
-                       sh "docker push vijaygiduthuri/zomato:latest "
+        stage ("Build Docker Image") {
+            steps {
+                sh "docker build -t zomato ."
+            }
+        }
+        stage ("Tag & Push to DockerHub") {
+            steps {
+                script {
+                    withDockerRegistry(credentialsId: 'docker') {
+                        sh "docker tag zomato kastrov/zomato:latest "
+                        sh "docker push kastrov/zomato:latest "
                     }
                 }
             }
         }
-        stage("TRIVY"){
-            steps{
-                sh "trivy image vijaygiduthuri/zomato:latest > trivy.txt" 
+        stage('Docker Scout Image Analysis') {
+            steps {
+                script{
+                   withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
+                       sh 'docker-scout quickview kastrov/zomato:latest'
+                       sh 'docker-scout cves kastrov/zomato:latest'
+                       sh 'docker-scout recommendations kastrov/zomato:latest'
+                   }
+                }
             }
         }
-        stage('Deploy to container'){
-            steps{
-                sh 'docker run -d --name zomato -p 3000:3000 vijaygiduthuri/zomato:latest'
+        stage ("Deploy to Container") {
+            steps {
+                sh 'docker run -d --name zomato -p 3000:3000 kastrov/zomato:latest'
             }
         }
     }
+    post {
+    always {
+        emailext attachLog: true,
+            subject: "'${currentBuild.result}'",
+            body: """
+                <html>
+                <body>
+                    <div style="background-color: #FFA07A; padding: 10px; margin-bottom: 10px;">
+                        <p style="color: white; font-weight: bold;">Project: ${env.JOB_NAME}</p>
+                    </div>
+                    <div style="background-color: #90EE90; padding: 10px; margin-bottom: 10px;">
+                        <p style="color: white; font-weight: bold;">Build Number: ${env.BUILD_NUMBER}</p>
+                    </div>
+                    <div style="background-color: #87CEEB; padding: 10px; margin-bottom: 10px;">
+                        <p style="color: white; font-weight: bold;">URL: ${env.BUILD_URL}</p>
+                    </div>
+                </body>
+                </html>
+            """,
+            to: 'kastrokiran@gmail.com',
+            mimeType: 'text/html',
+            attachmentsPattern: 'trivy.txt'
+        }
+    }
 }
-
