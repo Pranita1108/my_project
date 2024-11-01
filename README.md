@@ -55,7 +55,7 @@ In this **DevOps project**, I demonstrate how to **deploy a ZOMATO Clone App** u
 [**ZOMATO Clone DevOps Project**](#)
 
 ### 📹 DevOps Project Video Link:  
-[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white)](Uploaded Soon)
+[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=8C9immtbEwk&list=RDXffhn3CZ8lI&index=2&pp=8AUB)
 
 ### 📺 Docker Playlist Video Link:  
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://www.youtube.com/playlist?list=PLs-PsDpuAuTeNx3OgGQ1QrpNBo-XE6VBh)
@@ -78,6 +78,8 @@ In this **DevOps project**, I demonstrate how to **deploy a ZOMATO Clone App** u
 ## Connect with me on LinkedIn:  
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kastro-kiran/)
 
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/EGw6ZlwUHZc82cA0vXFnwm) - Join the DevOps technical discussions!
+
 ---
 
 ### Request:  
@@ -89,7 +91,11 @@ After deploying the app, please share your opinion on LinkedIn along with the Pr
 ## Happy learning!  
 <img src="https://media.licdn.com/dms/image/v2/D5603AQHJB_lF1d9OSw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718971147172?e=1735776000&v=beta&t=HC_e0eOufPvf8XQ0P7iI9GDm9hBSIh5FwQaGsL_8ivo" alt="Kastro Profile Image" width="100" height="100" style="border-radius:50%;">
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> f56b128 (Update README.md)
 =======
+=======
+
+>>>>>>> 8c57dca (Update README.md)
 KASTRO KIRAN V
 >>>>>>> 586844b (Update README.md)
