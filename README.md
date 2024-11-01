@@ -83,7 +83,7 @@ In this **DevOps project**, I demonstrate how to **deploy a ZOMATO Clone App** u
 
 ---
 
-### Request:  
+### Feedback Request:  
 
 After deploying the app, please share your opinion on LinkedIn along with the Project link and tag me on LinkedIn. Help the video reach wider DevOps enthusiasts.
 
