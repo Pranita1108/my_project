@@ -1,8 +1,6 @@
-DevOps Project - Kastro
+DevOps Project - StarAgile
 Deployment of ZOMATO Project
 --------------------------------------------
-Repo URL: https://github.com/KastroVKiran/DevOps-Project-Zomato-Kastro.git
-
 
 1. Launch an Instance (Ubuntu, 24.04, t2.large, 30 GB)
 
@@ -713,4 +711,5 @@ Kind Request:
 Once after you have successfully deployed the App, kindly share your experience on LinkedIn by Tagging me and also provide the YouTube link of this project in your post, as it helps others to access the video quickly. 
 ========================================================================================================
 												HAPPY LEARNING
+
 
