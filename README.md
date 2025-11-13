@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # 🚀 DevOps Project on Deployment of ZOMATO Clone App 🍽️
 
 This project is used to learn webhook and poll SCM triggers, including simulation triggers to understand poll SCM.
@@ -100,3 +101,6 @@ After deploying the app, please share your opinion on LinkedIn along with the Pr
 >>>>>>> 8c57dca (Update README.md)
 KASTRO KIRAN V
 >>>>>>> 586844b (Update README.md)
+=======
+
+>>>>>>> 2a1fbee (Update README.md)
