@@ -31,13 +31,13 @@ spec:
             memory: 200Mi
         volumeMounts:
         - name: proc
-          mountPath: /host/proc
+          mountPath: /proc
           readOnly: true
         - name: sys
-          mountPath: /host/sys
+          mountPath: /sys
           readOnly: true
         - name: rootfs
-          mountPath: /rootfs
+          mountPath: /root
           readOnly: true
       volumes:
       - name: proc
